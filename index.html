@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <script defer src="./javascript/questions.js"></script>
+    <script defer src="./javascript/javascript.js"></script>
+    <title>Manos Quiz App</title>
+</head>
+
+<body>
+    <div class="menu">
+        <div class="score hide">
+            Present Score: 0
+        </div>
+        <div class="countDownTimer hide">
+            Time Left: 0
+        </div>
+        <h1 id="display-ans" class="heading">How much do you know manos?</h1>
+
+        <div class="start-menu">
+            <button id="btn-start" class="btn btn-startmenu">
+                let's Play!
+            </button>
+            <button id="btn-high" class="btn btn-startmenu">
+                Hall of Fame!
+            </button>
+        </div>
+        <div class="game-menu hide">
+            <p id="question-num">Question</p>
+            <p id="question" class="questions">Who am i?</p>
+            <br>
+
+            <button id="btn1" class="btn btn-options answer-btn">
+                Hi!
+            </button>
+            <button id="btn2" class="btn btn-options answer-btn">
+                Hey!
+            </button>
+            <button id="btn3" class="btn btn-options answer-btn">
+                Hello!
+            </button>
+            <button id="btn4" class="btn btn-options answer-btn">
+                Hu!
+            </button>
+        </div>
+        <button id="next-btn" class="btn btn-options next-btn hide">
+            Next Question!
+        </button>
+        <div id="high-scorepage" class="high-scores hide">
+            <input id="name-input" type="text" onfocus="this.value=''" placeholder="Enter your name here...">
+            <button id="saveHighScore">Save Score</button>
+            <button id="main-menu"> Main Menu</button>
+            <p class="high-scorepara hide">SCORE -- NAME</p>
+        </div>
+    </div>
+    <button id="sound-toggle" style="background-color : dodgerblue;" onclick="toggleControls()">Switch to background music 2</button>
+
+    <audio id="audio-background"  src="./sounds/2 start game.mp3" loop controls= "true"></audio>
+    <audio id="audio-midgame" class="hide"  src="./sounds/4 final mid game.mp3" loop controls= "true"></audio>
+    <audio id="audio-gameover" src="./sounds/5 game over.mp3"></audio>
+    <audio id="audio-click" src="./sounds/click sound.wav"></audio>
+    <audio id="audio-correct" src="./sounds/mixkit-video-game-health-recharge-2837.wav"></audio>
+    <audio id="audio-fail" src="./sounds/fail short.wav"></audio>
+    
+</body>
+</body>
+
+</html>
