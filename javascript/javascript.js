@@ -38,6 +38,7 @@
     let currentQuestionIndex = 0;
     let checkAnswer = shuffledQuestions[currentQuestionIndex]["answers"];
     let oldscore = 0;
+     
 
     //Event listeners
     startBtn.addEventListener("click", startQuiz);
@@ -45,20 +46,19 @@
     saveHighScoreBtn.addEventListener('click', saveScore);
     mainMenuBtn.addEventListener('click', mainMenu);
     highBtn.addEventListener("click", hallOfFame);
-    
     audioBackground.volume = 0.1;
+    displayAns.innerHTML = `Quiz Category:  <br>     ${questions[0].category.slice(8)}`
+    // console.log(questions);
+
+
     
-    
-    //Functions
+    // //Functions
     function stopBackgroundMusic() {
         audioMidGame.pause();
         audioMidGame.currentTime = 0;
         audioBackground.pause();
         audioBackground.currentTime = 0;
     }
-
-
-
 
     function hallOfFame() {
         playAudioClick();
@@ -88,8 +88,14 @@
     }
 
     function startQuiz() {
-        shuffledQuestions = arrayShuffle(questions);
-        checkAnswer = shuffledQuestions[currentQuestionIndex]["answers"];
+                    let answers = [
+                        {text: shuffledQuestions[currentQuestionIndex]['correct_answer'], correct: true},
+                        {text: shuffledQuestions[currentQuestionIndex]['incorrect_answers'][0], correct: false},
+                        {text: shuffledQuestions[currentQuestionIndex]['incorrect_answers'][1], correct: false},
+                        {text: shuffledQuestions[currentQuestionIndex]['incorrect_answers'][2], correct: false}
+                    ]
+        checkAnswer = arrayShuffle(answers);
+        // console.log(checkAnswer)
         stopBackgroundMusic();
         playAudioBackground();
         playAudioClick();
@@ -164,10 +170,13 @@
     }
 
     function nextQuestion(e) {
+       
         playAudioClick();
         startTimer(15);
         countDownTimer.classList.remove("hide");
         currentQuestionIndex++;
+
+       
         if (currentQuestionIndex == (shuffledQuestions.length /2) || currentQuestionIndex == 5) {
             nextBtn.style.backgroundColor = "orange";
             stopBackgroundMusic();
@@ -186,13 +195,23 @@
             endGame();
             return;
         }
+        let answers = [
+            {text: shuffledQuestions[currentQuestionIndex]['correct_answer'], correct: true},
+            {text: shuffledQuestions[currentQuestionIndex]['incorrect_answers'][0], correct: false},
+            {text: shuffledQuestions[currentQuestionIndex]['incorrect_answers'][1], correct: false},
+            {text: shuffledQuestions[currentQuestionIndex]['incorrect_answers'][2], correct: false}
+        ]
+        checkAnswer = arrayShuffle(answers);
+        // console.log(checkAnswer)
+
+
         questionNum.innerHTML = "QUESTION " + (currentQuestionIndex + 1) +  " of 10 shuffled from " + shuffledQuestions.length;
         questionPara.innerHTML = shuffledQuestions[currentQuestionIndex]["question"];
         nextBtn.classList.add("hide");
         displayAns.classList.add("hide");
         for (let i = 0; i < checkAnswer.length; i++ ) {
-            answerBtn[i].innerHTML = shuffledQuestions[currentQuestionIndex]["answers"][i]["text"]; 
-            answerBtn[i].setAttribute("correct", shuffledQuestions[currentQuestionIndex]["answers"][i]["correct"]);
+            answerBtn[i].innerHTML =checkAnswer[i]["text"]; 
+            answerBtn[i].setAttribute("correct", checkAnswer[i]["correct"]);
             answerBtn[i].style.backgroundColor = "dodgerblue";
             answerBtn[i].style.color = "white"; 
             answerBtn[i].disabled = false;
@@ -201,6 +220,7 @@
     }
 
     function endGame() {
+        console.log('hi')
         if (localStorage.getItem("quizHighScores") == undefined) {
 
         } else {
@@ -293,9 +313,19 @@
         audioBackground.currentTime = 0;
         questionNum.innerHTML = "QUESTION " + (currentQuestionIndex + 1) + " of 10, shuffled from " + shuffledQuestions.length;
         questionPara.innerHTML = shuffledQuestions[currentQuestionIndex]["question"];
+
+        let answers = [
+            {text: shuffledQuestions[currentQuestionIndex]['correct_answer'], correct: true},
+            {text: shuffledQuestions[currentQuestionIndex]['incorrect_answers'][0], correct: false},
+            {text: shuffledQuestions[currentQuestionIndex]['incorrect_answers'][1], correct: false},
+            {text: shuffledQuestions[currentQuestionIndex]['incorrect_answers'][2], correct: false}
+        ]
+        checkAnswer = arrayShuffle(answers);
+
+
         for (let i = 0; i < checkAnswer.length; i++ ) {
-            answerBtn[i].innerHTML = shuffledQuestions[currentQuestionIndex]["answers"][i]["text"]; 
-            answerBtn[i].setAttribute("correct", shuffledQuestions[currentQuestionIndex]["answers"][i]["correct"]);
+            answerBtn[i].innerHTML = checkAnswer[i]["text"]; 
+            answerBtn[i].setAttribute("correct", checkAnswer[i]["correct"]);
             answerBtn[i].style.backgroundColor = "dodgerblue";
             answerBtn[i].style.color = "white"; 
             answerBtn[i].disabled = false;
