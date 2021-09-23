@@ -49,8 +49,6 @@
     audioBackground.volume = 0.1;
     displayAns.innerHTML = `Quiz Category:  <br>  ${questions[0].category.slice(8)}`
     // console.log(questions);
-
-
     
     // //Functions
     function stopBackgroundMusic() {
@@ -296,7 +294,7 @@
         mainMenuBtn.classList.add("hide");
         startBtn.classList.remove("hide");
         highBtn.classList.remove("hide");
-        displayAns.innerHTML = "How much do you know manos?"
+        displayAns.innerHTML = displayAns.innerHTML = `Quiz Category:  <br>  ${questions[0].category.slice(8)}`
         score.classList.remove("hide");
         nextBtn.style.backgroundColor = "blue";
         nextBtn.innerHTML = "NEXT QUESTION";
