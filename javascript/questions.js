@@ -1,5 +1,4 @@
  //Questions
-//  setTimeout(myFunc, 3000)
 getData();
 async function getData() {
     const res = await fetch("https://opentdb.com/api.php?amount=50&category=18&difficulty=medium&type=multiple")
@@ -10,10 +9,6 @@ async function getData() {
 const questions =  JSON.parse(localStorage.getItem('quiz'));
 console.log(questions);
 
-
-
-
-    
  
 //  [
 //     {

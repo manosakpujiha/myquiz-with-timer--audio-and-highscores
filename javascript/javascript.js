@@ -47,7 +47,7 @@
     mainMenuBtn.addEventListener('click', mainMenu);
     highBtn.addEventListener("click", hallOfFame);
     audioBackground.volume = 0.1;
-    displayAns.innerHTML = `Quiz Category:  <br>     ${questions[0].category.slice(8)}`
+    displayAns.innerHTML = `Quiz Category:  <br>  ${questions[0].category.slice(8)}`
     // console.log(questions);
 
 
